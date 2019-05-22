@@ -15,13 +15,13 @@ app.intent('Default Welcome Intent', conv => {
         xmlToJson(url, function (err, data) {
             var prayer = "";
             if (err) {
-                prayer = "I'm sorry, Daily Prayer is not available at this moment."
+                prayer = "I'm sorry, Daily Prayer is not available at this moment.";
             } else {
                 prayer = data.rss.channel[0].item[0].description[0];
                 prayer = striptags(prayer);
             }
 
-            resolve(conv.ask(prayer));
+            resolve(conv.close(prayer));
         });
     });
 });
